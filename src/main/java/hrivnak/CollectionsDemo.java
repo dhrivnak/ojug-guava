@@ -2,7 +2,6 @@ package hrivnak;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -42,13 +41,13 @@ public class CollectionsDemo {
 		List<String> forward = Lists.newArrayList("we", "can", "initialize", "lists", "here");
 		List<String> backwardView = Lists.reverse(forward);
 
-		printCollection("list:", forward);
-		printCollection("list reversed:", backwardView);
+		Utils.printCollection("list:", forward);
+		Utils.printCollection("list reversed:", backwardView);
 
 		// let's see what happens when we remove an element from the backwardView
 		backwardView.remove("initialize");
-		printCollection("list:", forward);
-		printCollection("list reversed:", backwardView);
+		Utils.printCollection("list:", forward);
+		Utils.printCollection("list reversed:", backwardView);
 	}
 
 	private static void sets() {
@@ -66,7 +65,7 @@ public class CollectionsDemo {
 		Multiset<String> multiSet = ImmutableMultiset.of("one", "two", "two", "three", "three", "three");
 
 		// if you iterate, you do so over all values not just unique values
-		printCollection("iterating over the Multiset:", multiSet);
+		Utils.printCollection("iterating over the Multiset:", multiSet);
 
 		System.out.println("multiSet.size() = " + multiSet.size());
 		System.out.println("multiSet.elementSet().size() = " + multiSet.elementSet().size());
@@ -79,7 +78,7 @@ public class CollectionsDemo {
 		SortedMultiset<Integer> latencies = TreeMultiset.create();
 		latencies.addAll(Arrays.asList(12, 15, 18, 10, 2, 5, 39, 3, 8, 9, 7, 7, 30, 32, 27, 22, 29, 19, 35));
 
-		printCollection("iterating over the SortedMultiset:", latencies);
+		Utils.printCollection("iterating over the SortedMultiset:", latencies);
 
 		// let's see how many latencies were below 25
 		SortedMultiset<Integer> latenciesBelow25 = latencies.subMultiset(0, BoundType.CLOSED, 25, BoundType.OPEN);
@@ -121,10 +120,4 @@ public class CollectionsDemo {
 		table.column(3); // returns a Map mapping 1 to "row1,col3", 2 to "row2,col3"
 	}
 
-	private static <T> void printCollection(String title, Collection<T> collection) {
-		System.out.println(title);
-		for (T element : collection) {
-			System.out.println("\t" + element);
-		}
-	}
 }
