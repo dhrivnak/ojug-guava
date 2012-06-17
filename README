@@ -1,3 +1,1 @@
 http://code.google.com/p/guava-libraries/
-
-mvn exec:java -Dexec.mainClass="foo.bar.EntryPoint" -Dexec.args="arg0 arg1 arg2"
