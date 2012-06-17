@@ -18,10 +18,10 @@ public class PredicatesDemo {
         people.add(new Person("Theodore", "Roosevelt"));
         people.add(new Person("William", "Taft"));
 
-        Iterable<Person> lastNamesStartingWithG = Iterables.filter(people, Person.lastNameStartsWith("G"));
+        Iterable<Person> lastNamesStartingWithG = Iterables.filter(people, People.lastNameStartsWith("G"));
         Utils.printCollection("people with last names starting with G:", lastNamesStartingWithG);
 
-        Iterable<Person> namesContainingTh = Iterables.filter(people, Person.nameContains("th"));
+        Iterable<Person> namesContainingTh = Iterables.filter(people, People.nameContains("th"));
         Utils.printCollection("people with names containing th:", namesContainingTh);
     }
 
@@ -46,7 +46,9 @@ public class PredicatesDemo {
         public String toString() {
             return firstName + " " + lastName;
         }
+    }
 
+    static final class People {
         public static Predicate<Person> lastNameStartsWith(final String prefix) {
             return new Predicate<Person>() {
                 public boolean apply(Person person) {
